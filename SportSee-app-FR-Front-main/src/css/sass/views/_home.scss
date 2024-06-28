@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Home page.
+// -----------------------------------------------------------------------------
+
+/**
+* Home page
+*/
+.home {
+	text-align: center;
+}
+
+.user-switch {
+	margin-right: 1rem;
+	font-size: 2rem;
+	font-weight: 500;
+	&-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	span {
+		color: #ff0101;
+	}
+}

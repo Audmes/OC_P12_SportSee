@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+* Basic styles
+**/
+body {
+  @include body-position;
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 100%;
+  }
+}
+
+section {
+	width: 100%;
+	margin-top: 5.6875rem;
+	padding-left: 7rem;
+	padding-top: 2rem;
+
+  @include desktop-breakpoint {
+    margin-top: 7rem;
+    padding-left: 4rem;
+	}
+}

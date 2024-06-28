@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to sidebarButton component.
+// -----------------------------------------------------------------------------
+
+/**
+* Sidebar Button Component
+*/
+.sidebar-button {
+	width: 4rem;
+	height: 4rem;
+	margin-bottom: 1.25rem;
+	border: none;
+	border-radius: 6px;
+	background-color: #ffffff;
+	&-logo {
+		width: 2rem;
+		height: 2rem;
+	}
+}
