@@ -9,8 +9,7 @@ import {
 	ResponsiveContainer,
 } from 'recharts';
 import PropTypes from 'prop-types';
-
-// import CustomToolTip from './CustomToolTip';
+import CustomToolTip from './CustomToolTip';
 
 /**
  * Render a BarChart using Recharts
@@ -46,10 +45,10 @@ function ChartActivity({ data }) {
 						tickCount={3}
 					/>
 					<YAxis hide yAxisId="calories" />
-					{/* <Tooltip
+					<Tooltip
 						content={<CustomToolTip />}
 						cursor={{ fill: 'rgba(196, 196, 196, 0.5)' }}
-					/> */}
+					/>
 					<Bar
 						name="Poids (kg)"
 						dataKey="kilogram"
