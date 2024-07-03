@@ -43,6 +43,7 @@ section {
   margin-top: 5.6875rem;
   padding-left: 7rem;
   padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 @media screen and (min-width: 1440px) {
   section {
@@ -397,6 +398,25 @@ section {
 }
 
 /**
+* Chart card Component
+*/
+.charts-card {
+  width: 16.25rem;
+  height: 16.25rem;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+}
+.charts-card.average-sessions {
+  background-color: #ff0000;
+}
+.charts-card.performance {
+  background-color: #282d30;
+}
+.charts-card.score {
+  background-color: #fbfbfb;
+}
+
+/**
 * Chart Activity Component
 */
 .activity-charts {
@@ -445,6 +465,64 @@ section {
   color: #20253a;
   font-size: 0.9375rem;
   font-weight: 500;
+}
+
+/**
+* Chart Goal Component
+*/
+.score {
+  position: relative;
+}
+
+.chartgoal-title {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.875rem;
+  color: #20253a;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.chartgoal-label {
+  color: #9b9eac;
+  font-weight: 500;
+  line-height: 1.625rem;
+  text-align: center;
+}
+.chartgoal-label p {
+  margin: 0;
+}
+.chartgoal-label .percent {
+  color: #282d30;
+  font-size: 1.625rem;
+  font-weight: 700;
+}
+
+/**
+* Chart Average Sessions Component
+*/
+.average-sessions {
+  position: relative;
+}
+.average-sessions .tooltip {
+  padding: 0.0625rem 0.4375rem;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: center;
+}
+.average-sessions .recharts-text {
+  font-weight: 500;
+}
+
+.chartaverage-sessions-title {
+  position: absolute;
+  top: 1.8125rem;
+  left: 2.125rem;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  opacity: 0.6;
 }
 
 /**
@@ -535,11 +613,10 @@ section {
 }
 
 .small-card-wrapper {
-  height: 263px;
+  max-height: 263px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
-  background-color: #ff0101;
 }
 @media screen and (min-width: 1440px) {
   .small-card-wrapper {

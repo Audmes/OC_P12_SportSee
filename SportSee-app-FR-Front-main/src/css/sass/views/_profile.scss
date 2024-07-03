@@ -38,8 +38,6 @@
 
 	&-charts-wrapper {
 		width: 835px;
-		height: 320px;
-		background-color: blueviolet;
 
 		display: flex;
 		flex-direction: column;
@@ -65,10 +63,16 @@
 	}
 }
 
+.activity-charts {
+	max-height: 320px;
+}
+
 .small-card-wrapper {
+	max-height: 263px;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2rem;
+
 	@include desktop-breakpoint {
 		margin-bottom: 0;
 	}

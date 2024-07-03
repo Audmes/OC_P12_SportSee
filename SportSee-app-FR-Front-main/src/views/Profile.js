@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../utils/useFetch';
 import Card from '../components/Card';
 import ChartsCard from '../components/ChartsCard';
-// import ChartActivity from '../components/ChartActivity';
-// import ChartAverageSessions from '../components/ChartAverageSessions';
-// import ChartGoal from '../components/ChartGoal';
-// import ChartPerformance from '../components/ChartPerformance';
+import ChartActivity from '../components/ChartActivity/ChartActivity';
+import ChartAverageSessions from '../components/ChartAverage/ChartAverage';
+import ChartGoal from '../components/ChartGoal';
+import ChartPerformance from '../components/ChartPerformance';
 
 import energy from '../assets/images/energy.svg';
 import chicken from '../assets/images/chicken.svg';
@@ -26,23 +26,23 @@ function Profile() {
 	const { userId } = useParams();
 	/* Fetch the data from API or mocked data */
 	const user = useFetch(
-		`https://sportsee.abcoding.fr/user/${userId}`,
+		`http://localhost:3000/user/${userId}`,
 		userId,
 		window.location.origin + '/SportSee/mocked-data/user-main-data.json'
 	);
 	const activity = useFetch(
-		`https://sportsee.abcoding.fr/user/${userId}/activity`,
+		`http://localhost:3000/user/${userId}/activity`,
 		userId,
 		window.location.origin + '/SportSee/mocked-data/user-activity.json'
 	);
 	const averageSessions = useFetch(
-		`https://sportsee.abcoding.fr/user/${userId}/average-sessions`,
+		`http://localhost:3000/user/${userId}/average-sessions`,
 		userId,
 		window.location.origin +
 			'/SportSee/mocked-data/user-average-sessions.json'
 	);
 	const performance = useFetch(
-		`https://sportsee.abcoding.fr/user/${userId}/performance`,
+		`http://localhost:3000/user/${userId}/performance`,
 		userId,
 		window.location.origin + '/SportSee/mocked-data/user-performance.json'
 	);
@@ -116,41 +116,7 @@ function Profile() {
 					</p>
 
 					<div className="dashboard">
-						<div className="dashboard-charts-wrapper">
-							
-						</div>
-						<div className="dashboard-aside">
-							<Card
-								userKeyData={userData.keyData.calorieCount}
-								unit="kCal"
-								subtitle="Calories"
-								className="calorie"
-								logo={energy}
-							/>
-							<Card
-								userKeyData={userData.keyData.proteinCount}
-								unit="g"
-								subtitle="Proteines"
-								className="protein"
-								logo={chicken}
-							/>
-							<Card
-								userKeyData={userData.keyData.carbohydrateCount}
-								unit="g"
-								subtitle="Glucides"
-								className="carbohydrate"
-								logo={apple}
-							/>
-							<Card
-								userKeyData={userData.keyData.lipidCount}
-								unit="g"
-								subtitle="Lipides"
-								className="lipid"
-								logo={cheeseburger}
-							/>
-						</div>
-					</div>
-					{/* <div className="dashboard">
+
 						<div className="dashboard-charts-wrapper">
 							<div className="activity-charts">
 								{activityData && (
@@ -159,6 +125,7 @@ function Profile() {
 									/>
 								)}
 							</div>
+
 							<div className="small-card-wrapper">
 								{averageSessionsData && (
 									<ChartsCard
@@ -183,6 +150,7 @@ function Profile() {
 										}
 									/>
 								)}
+
 								{userData && (
 									<ChartsCard
 										className="score"
@@ -222,7 +190,7 @@ function Profile() {
 								logo={cheeseburger}
 							/>
 						</div>
-					</div> */}
+					</div>
 				</div>
 			)}
 		</section>
