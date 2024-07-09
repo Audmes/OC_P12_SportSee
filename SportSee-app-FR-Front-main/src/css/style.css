@@ -96,6 +96,7 @@ section {
   align-items: center;
   margin: 0;
   padding: 10px 20px;
+  z-index: 1;
   background-color: #000000;
 }
 @media screen and (min-width: 769px) {
@@ -117,6 +118,12 @@ section {
 }
 .header__fig img {
   width: 100%;
+}
+.header__nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /**
@@ -157,8 +164,10 @@ section {
 .nav-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   text-transform: uppercase;
+  width: 100%;
+  max-width: 994px;
 }
 @media screen and (min-width: 769px) {
   .nav-header {

@@ -6,8 +6,10 @@
 * Nav Component
 */
 .nav-header {
-    @include flex-end;
+    @include flex-between;
     text-transform: uppercase;
+    width: 100%;
+    max-width: 994px;
   
     @media screen and (min-width: $breakpoint-desktop) {
         text-transform: none;
