@@ -20,7 +20,8 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 
 	useEffect(() => {
 		setLoading(true)
-		async function fetchData(fetchURL, isDataMocked, errorSetState) {
+		async function fetchData(fetchURL, isDataMocked, errorSetState, secondTime = false) {
+			
 			try {
 				const response = await fetch(fetchURL);
 				const data = await response.json();
@@ -41,8 +42,11 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 			} catch (err) {
 				console.log(err);
 
-				if (urlMockedData) {
-					fetchData(urlMockedData, true, setErrorMocked);
+				// Pour arrêter la boucle
+				if(!secondTime) {
+					if (urlMockedData) {
+						fetchData(urlMockedData, true, setErrorMocked, true);
+					}
 				}
 
 				errorSetState(true);
