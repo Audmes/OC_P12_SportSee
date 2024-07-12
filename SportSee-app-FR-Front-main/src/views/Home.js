@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Context } from '../context/Context';
 
 import ToggleButton from '../components/ToggleButton';
-// import ComingSoon from '../components/ComingSoon';
+import ComingSoon from '../components/ComingSoon';
 
 /**
  * Render Home page
@@ -30,7 +30,7 @@ export default function Home() {
 					optionLabels={['18', '12']}
 				/>
 			</div>
-			{/* <ComingSoon /> */}
+			<ComingSoon />
 		</section>
 	)
 }
