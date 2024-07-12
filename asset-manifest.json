@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/OC_P12_SportSee/static/css/main.3d650f04.css",
-    "main.js": "/OC_P12_SportSee/static/js/main.fa43fff0.js",
+    "main.js": "/OC_P12_SportSee/static/js/main.36e1ad55.js",
     "static/js/453.e45774a4.chunk.js": "/OC_P12_SportSee/static/js/453.e45774a4.chunk.js",
     "static/media/logo.svg": "/OC_P12_SportSee/static/media/logo.837414860efdf652f26ae7be654e06c5.svg",
     "static/media/swimming.svg": "/OC_P12_SportSee/static/media/swimming.bc12b705d445672f550a8441d581c700.svg",
@@ -14,11 +14,11 @@
     "static/media/energy.svg": "/OC_P12_SportSee/static/media/energy.25fef86ed5860200bdf90f9cd185e1e3.svg",
     "static/media/haltere.svg": "/OC_P12_SportSee/static/media/haltere.9d22814b98d0ca386d9ddacded4eae80.svg",
     "main.3d650f04.css.map": "/OC_P12_SportSee/static/css/main.3d650f04.css.map",
-    "main.fa43fff0.js.map": "/OC_P12_SportSee/static/js/main.fa43fff0.js.map",
+    "main.36e1ad55.js.map": "/OC_P12_SportSee/static/js/main.36e1ad55.js.map",
     "453.e45774a4.chunk.js.map": "/OC_P12_SportSee/static/js/453.e45774a4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3d650f04.css",
-    "static/js/main.fa43fff0.js"
+    "static/js/main.36e1ad55.js"
   ]
 }
