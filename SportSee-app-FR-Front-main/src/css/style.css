@@ -565,7 +565,7 @@ section {
 @media screen and (min-width: 1440px) {
   .profile {
     width: fit-content;
-    padding-left: 0;
+    padding-left: 7.3125rem; /* 0 */
   }
 }
 .profile-title {
