@@ -26,22 +26,22 @@ function Profile() {
 	const { userId } = useParams();
 	/* Fetch the data from API or mocked data */
 	const user = useFetch(
-		`http://localhost:3002/user/${userId}`,
+		`http://localhost:3000/user/${userId}`,
 		userId,
 		window.location.origin + '/OC_P12_SportSee/mocked-data/user-main-data.json'
 	);
 	const activity = useFetch(
-		`http://localhost:3002/user/${userId}/activity`,
+		`http://localhost:3000/user/${userId}/activity`,
 		userId,
 		window.location.origin + '/OC_P12_SportSee/mocked-data/user-activity.json'
 	);
 	const averageSessions = useFetch(
-		`http://localhost:3002/user/${userId}/average-sessions`,
+		`http://localhost:3000/user/${userId}/average-sessions`,
 		userId,
 		window.location.origin + '/OC_P12_SportSee/mocked-data/user-average-sessions.json'
 	);
 	const performance = useFetch(
-		`http://localhost:3002/user/${userId}/performance`,
+		`http://localhost:3000/user/${userId}/performance`,
 		userId,
 		window.location.origin + '/OC_P12_SportSee/mocked-data/user-performance.json'
 	);

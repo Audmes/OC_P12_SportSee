@@ -19,7 +19,7 @@ import Community from "./views/Community";
 
 const App = () => {
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/OC_P12_SportSee">
             <Header />
             <Sidebar />
             <Routes>
