@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/Profile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/Profile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useParams } from 'react-router-dom';
+
+import { useFetch } from '../utils/useFetch';
+import Card from '../components/Card';
+import ChartsCard from '../components/ChartsCard';
+import ChartActivity from '../components/ChartActivity/ChartActivity';
+import ChartAverageSessions from '../components/ChartAverage/ChartAverage';
+import ChartGoal from '../components/ChartGoal';
+import ChartPerformance from '../components/ChartPerformance';
+
+import energy from '../assets/images/energy.svg';
+import chicken from '../assets/images/chicken.svg';
+import apple from '../assets/images/apple.svg';
+import cheeseburger from '../assets/images/cheeseburger.svg';
+
+/**
+ * Render Profile page
+ *
+ * @category Pages
+ * @component
+ * @returns { React.Component } A React component
+ */
+function Profile() {
+	document.title = 'Profile - SportSee';
+
+	const { userId } = useParams();
+	/* Fetch the data from API or mocked data */
+	const user = useFetch(
+		`http://localhost:3000/user/${userId}`,
+		userId,
+		window.location.origin + '/OC_P12_SportSee/mocked-data/user-main-data.json'
+	);
+	const activity = useFetch(
+		`http://localhost:3000/user/${userId}/activity`,
+		userId,
+		window.location.origin + '/OC_P12_SportSee/mocked-data/user-activity.json'
+	);
+	const averageSessions = useFetch(
+		`http://localhost:3000/user/${userId}/average-sessions`,
+		userId,
+		window.location.origin + '/OC_P12_SportSee/mocked-data/user-average-sessions.json'
+	);
+	const performance = useFetch(
+		`http://localhost:3000/user/${userId}/performance`,
+		userId,
+		window.location.origin + '/OC_P12_SportSee/mocked-data/user-performance.json'
+	);
+
+	/**
+	 * Function to return on dataObject with the data from the API if available, or the mocked data if not.
+	 * @param {Object} dataObject - Object that will contain the data .
+	 * @param {Object} apiData - Data from the API.
+	 * @returns The dataObject is returned.
+	 */
+	const formatData = (dataObject, apiData) => {
+		if (apiData.apiData) {
+			dataObject = apiData.apiData
+			return dataObject
+		} else if (apiData.mockedData) {
+			dataObject = apiData.mockedData
+			return dataObject
+		}
+	}
+
+	/* Init the dataObject and format the data */
+	let userData = {};
+	userData = formatData(userData, user);
+	let activityData = {};
+	activityData = formatData(activityData, activity);
+	let averageSessionsData = {};
+	averageSessionsData = formatData(averageSessionsData, averageSessions);
+	let performanceData = {};
+	performanceData = formatData(performanceData, performance);
+
+	/* If the data is loading, display a loading message to the user */
+	if (
+		user.isLoading ||
+		activity.isLoading ||
+		averageSessions.isLoading ||
+		performance.isLoading
+	) {
+		return (
+			&lt;section className="profile-wrapper">
+				&lt;h2 className="center">Chargement...&lt;/h2>
+			&lt;/section>
+		)
+	}
+
+	/* If the fetches on the API and the mocked data returns errors, display a error message to the user */
+	if (
+		(user.errorAPI &amp;&amp; user.errorMocked) ||
+		(activity.errorAPI &amp;&amp; activity.errorMocked) ||
+		(averageSessions.errorAPI &amp;&amp; averageSessions.errorMocked) ||
+		(performance.errorAPI &amp;&amp; performance.errorMocked)
+	) {
+		return (
+			&lt;section className="profile-wrapper">
+				&lt;h2 className="center">Une erreur est survenue !&lt;/h2>
+			&lt;/section>
+		)
+	}
+
+	return (
+		&lt;section className="profile-wrapper">
+			{userData &amp;&amp; (
+				&lt;div className="profile">
+					&lt;h2 className="profile-title">
+						Bonjour{' '}
+						&lt;span className="profile-firstName">
+							{userData.userInfos.firstName}
+						&lt;/span>
+					&lt;/h2>
+					&lt;p className="profile-subtitle">
+						Félicitation ! Vous avez explosé vos objectifs hier 👏
+					&lt;/p>
+
+					&lt;div className="dashboard">
+
+						&lt;div className="dashboard-charts-wrapper">
+							&lt;div className="activity-charts">
+								{activityData &amp;&amp; (
+									&lt;ChartActivity
+										data={activityData.sessions}
+									/>
+								)}
+							&lt;/div>
+
+							&lt;div className="small-card-wrapper">
+								{averageSessionsData &amp;&amp; (
+									&lt;ChartsCard
+										className="average-sessions"
+										content={
+											&lt;ChartAverageSessions
+												data={
+													averageSessionsData.sessions
+												}
+											/>
+										}
+									/>
+								)}
+
+								{performanceData &amp;&amp; (
+									&lt;ChartsCard
+										className="performance"
+										content={
+											&lt;ChartPerformance
+												data={performanceData}
+											/>
+										}
+									/>
+								)}
+
+								{userData &amp;&amp; (
+									&lt;ChartsCard
+										className="score"
+										content={&lt;ChartGoal data={userData} />}
+									/>
+								)}
+							&lt;/div>
+						&lt;/div>
+
+						&lt;div className="dashboard-aside">
+							&lt;Card
+								userKeyData={userData.keyData.calorieCount}
+								unit="kCal"
+								subtitle="Calories"
+								className="calorie"
+								logo={energy}
+							/>
+							&lt;Card
+								userKeyData={userData.keyData.proteinCount}
+								unit="g"
+								subtitle="Proteines"
+								className="protein"
+								logo={chicken}
+							/>
+							&lt;Card
+								userKeyData={userData.keyData.carbohydrateCount}
+								unit="g"
+								subtitle="Glucides"
+								className="carbohydrate"
+								logo={apple}
+							/>
+							&lt;Card
+								userKeyData={userData.keyData.lipidCount}
+								unit="g"
+								subtitle="Lipides"
+								className="lipid"
+								logo={cheeseburger}
+							/>
+						&lt;/div>
+					&lt;/div>
+				&lt;/div>
+			)}
+		&lt;/section>
+	)
+}
+
+export default Profile;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#ChartActivity">ChartActivity</a></li><li><a href="global.html#ChartAverageSessions">ChartAverageSessions</a></li><li><a href="global.html#ChartGoal">ChartGoal</a></li><li><a href="global.html#ChartPerformance">ChartPerformance</a></li><li><a href="global.html#ChartsCard">ChartsCard</a></li><li><a href="global.html#ComingSoon">ComingSoon</a></li><li><a href="global.html#Community">Community</a></li><li><a href="global.html#CustomToolTip">CustomToolTip</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#Provider">Provider</a></li><li><a href="global.html#Settings">Settings</a></li><li><a href="global.html#ToggleSwitch">ToggleSwitch</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jul 17 2024 14:37:47 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
