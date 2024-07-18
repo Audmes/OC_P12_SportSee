@@ -13,7 +13,7 @@ const Nav = () => {
                     Accueil
                 </NavLink>
                 <NavLink to={`/profile/${userId}`} className="nav-header__nav-link-profil">
-                    Profile
+                    Profil
                 </NavLink>
                 <NavLink to="/settings" className="nav-header__nav-link-settings">
                     Réglage

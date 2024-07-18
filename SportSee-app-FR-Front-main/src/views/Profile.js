@@ -86,6 +86,14 @@ function Profile() {
 		)
 	}
 
+	if ((userData == undefined)) {
+		return (
+			<section className="profile-wrapper">
+				<h2 className="center">Ce profil n'existe pas !</h2>
+			</section>
+		)
+	}
+
 	/* If the fetches on the API and the mocked data returns errors, display a error message to the user */
 	if (
 		(user.errorAPI && user.errorMocked) ||

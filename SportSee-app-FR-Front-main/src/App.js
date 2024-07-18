@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import Profile from "./views/Profile";
 import Settings from "./views/Settings";
 import Community from "./views/Community";
+import NoPage from "./views/NoPage";
 
 /**
  * Router to render the Header, the Sidebar and the 4 pages of the application
@@ -27,6 +28,7 @@ const App = () => {
                 <Route exact path="/profile/:userId" element={<Profile />} />
                 <Route exact path="/settings" element={<Settings />} />
                 <Route exact path="/community" element={<Community />} />
+                <Route path="*" element={<NoPage />} />
             </Routes>
         </BrowserRouter>
     );
