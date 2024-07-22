@@ -19,7 +19,8 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 	const [errorMocked, setErrorMocked] = useState(false);
 
 	useEffect(() => {
-		setLoading(true)
+		setLoading(true);
+
 		async function fetchData(fetchURL, isDataMocked, errorSetState, secondTime = false) {
 			
 			try {
@@ -29,18 +30,24 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 				if (isDataMocked === false) {
 					setApiData(data.data);
 				} else if (isDataMocked === true) {
+					
 					if (userID) {
-						setMockedData(
-							data.find(
-								(item) =>
-									item.id === parseInt(userID) ||
-									item.userId === parseInt(userID)
-							)
+						const userData = data.find(
+							(item) =>
+								item.id === parseInt(userID) ||
+								item.userId === parseInt(userID)
 						);
+
+						// Assignation des données
+						if (userData) { // Si l'utilisateur existe 
+							setMockedData(userData);
+						}else {
+							setErrorMocked(true);
+						}
 					}
 				}
 			} catch (err) {
-				console.log(err);
+				// console.log(err);
 
 				// Pour arrêter la boucle
 				if(!secondTime) {
@@ -54,7 +61,10 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 				setLoading(false);
 			}
 		}
-		fetchData(urlAPI, false, setErrorAPI)
+
+		fetchData(urlAPI, false, setErrorAPI);
+
 	}, [urlAPI, userID, urlMockedData])
+	
 	return { isLoading, apiData, mockedData, errorAPI, errorMocked }
 }
