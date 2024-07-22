@@ -18,7 +18,7 @@ import CustomToolTip from './CustomToolTip';
  * @component
  * @returns { React.Component } A React component
  */
-function ChartActivity({ data }) {
+const ChartActivity = ({ data }) => {
 	return (
 		<>
 			<h3 className="chartactivity-title">Activité quotidienne</h3>
