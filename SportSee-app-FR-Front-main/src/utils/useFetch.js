@@ -38,8 +38,7 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 								item.userId === parseInt(userID)
 						);
 
-						// Assignation des données
-						if (userData) { // Si l'utilisateur existe 
+						if (userData) { 
 							setMockedData(userData);
 						}else {
 							setErrorMocked(true);
@@ -48,8 +47,6 @@ export function useFetch(urlAPI, userID, urlMockedData) {
 				}
 			} catch (err) {
 				// console.log(err);
-
-				// Pour arrêter la boucle
 				if(!secondTime) {
 					if (urlMockedData) {
 						fetchData(urlMockedData, true, setErrorMocked, true);

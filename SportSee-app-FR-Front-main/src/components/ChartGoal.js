@@ -1,4 +1,5 @@
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
+import formatDatas from '../models/formatDatas';
 import PropTypes from 'prop-types';
 
 /**
@@ -9,8 +10,10 @@ import PropTypes from 'prop-types';
  * @returns { React.Component } A React component
  */
 function ChartGoal({ data }) {
-	const score = data.todayScore ? data.todayScore : data.score
-	const dataArray = [{ name: 'score', value: score }]
+	// const score = data.todayScore ? data.todayScore : data.score;
+	const score = new formatDatas(data);
+	const dataArray = [{ name: 'score', value: score.todayScore }];
+
 	return (
 		<>
 			<h3 className="chartgoal-title">Score</h3>
@@ -39,8 +42,7 @@ function ChartGoal({ data }) {
 			</ResponsiveContainer>
 			<div className="chartgoal-label center">
 				<p className="percent">
-					{data.score && data.score * 100}
-					{data.todayScore && data.todayScore * 100}%
+					{score.todayScore * 100}%
 				</p>
 				<p>de votre</p>
 				<p>objectif</p>
