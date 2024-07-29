@@ -27,7 +27,14 @@ Ce projet consiste à développer un tableau de bord d'analytics de coaching spo
 - Interagir avec un service Web
 
 ### Informations complémentaires
-- Soutenance validé le : 
+- Soutenance validé le : 25/07/2024
+
+#### Livrable
+
+##### Points forts :
+
+- Le projet répond parfaitement aux contraintes et exigences demandées.
+- La base du code et solide et maintenable. Pas de fioritures, le code va à l'essentiel sans se compliquer  la vie.
 
 ### Liens
 - Maquettes : https://www.figma.com/design/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0-1&t=pfmRNC7GJo5ryKWR-0
